@@ -1,4 +1,3 @@
-# Set Up C# ARM Development Toolchain with Visual Studio Code
 In the previous [post](https://maurizioattanasi.blogspot.com/2020/03/set-up-c-arm-development-toolchain-with.html), I described the steps followed to set up a remote development toolchain for c++ programming on an ARM-based microcontroller (in my case, a [Friendly ELEC NanoPi M1 Plus](https://www.friendlyarm.com/index.php?route=product/product&product_id=176), but the same steps should be valid on the more popular [RaspberryPi](https://www.raspberrypi.org/) ).  
 
   
@@ -7,7 +6,7 @@ In the previous [post](https://maurizioattanasi.blogspot.com/2020/03/set-up-c-ar
 
   
 
-In this note, I'll try to do something similar but using the latest long time support version of dotnet core (3.1 LTS ver. 3.1.201).
+In this note, I'll try to do something similar but using the latest long time support version of dotnet core, 3.1 LTS (ver. 3.1.201 at the time of writing this post).
 
 ### Pi Setup
 
@@ -108,7 +107,7 @@ In order to verify the machine on which we are running our simple test program w
 
   
 
-As we did for the [C++ toolchain](https://maurizioattanasi.blogspot.com/2020/03/set-up-c-arm-development-toolchain-with.html) we will make use of rsync, so our task.json and launch.json files will be:
+As we did for the [C++ toolchain](https://maurizioattanasi.blogspot.com/2020/03/set-up-c-arm-development-toolchain-with.html) we will make use of [rsync](https://linux.die.net/man/1/rsync), a copying tool available on macOS, Linux, and now also on Windows 10 via the Windows Subsystem for Linux or [WSL2](https://docs.microsoft.com/it-it/windows/wsl/about) so our task.json and launch.json files will be:
 
   
 
@@ -239,17 +238,15 @@ and the program output will be:
 
   
 Selecting the remote debug configuration, we will have instead:  
-  
 
 [![](https://1.bp.blogspot.com/-eBNUdBsQdkE/XomugFplkwI/AAAAAAAALmA/xRt_lb_IwNMs_m-RY-h8Lk-YP6prWDkvQCLcBGAsYHQ/s320/remote-debug.png)](https://1.bp.blogspot.com/-eBNUdBsQdkE/XomugFplkwI/AAAAAAAALmA/xRt_lb_IwNMs_m-RY-h8Lk-YP6prWDkvQCLcBGAsYHQ/s1600/remote-debug.png)
 
-  
-
 [![](https://1.bp.blogspot.com/-g_jLCT_y2NY/XomudpfIhsI/AAAAAAAALl8/BCZuOSbOGVopIBRICsCVIgMZxI2_TY8jQCEwYBhgLKs4DAMBZVoA4veEi53RtOoVPwB2jiUcCHIADM0Bw-f0GDIRNZ_3ocF_KoJWW4gggVC9iUdxIHD0Aw6dY7D_pzje67A7H15XjdHRTKU3MDaQ4Qbd-rbl89acdSmf9hWCE4z_H6IkbfBPxoezSOh-Csoj3dkWUPO6I88qbAJ5lRW7TMIgJRSpjh2wfIquGpmlJo6JqjdhMuq1gJLZRb6Woyxj6_Obq0YCtT0mNLjIcNp3ddznJEIO6tinA54FBKztWmjlcMIlUi8dmUcesdepEHoq26aDmbN84HchQG88RnXVSCdnl0_nIndqxhNZvgC1cMmZGX_YMqXNeGMh8GjNsB5uDoD9SUn9Blc0wz_J_VP9maj_GcxEZAxcF4y9otFkBXSHX75422dAbiSZkrP16_jfK-GIP-lNaM1HZmYouiumibzvt87ntNaaTpBRQXIgkKyr2zOa6XYxpV9ik4hHrCueDPLp0mSmbMa-E64I39HCwjM2YNeNU9ofdGrOYIMy4vbutxPD0oQYAa4Btam4goOw--i0Vez-GgbhK-PlaAW_4zlkh7vuLrIQrqS3NQ6tZy8ljhzqkfhhHvrc9hfnKV3LK0HTFWAA8MyvcG5JIpx_XMO7hpvQF/s320/remote-breakpoint.png)](https://1.bp.blogspot.com/-g_jLCT_y2NY/XomudpfIhsI/AAAAAAAALl8/BCZuOSbOGVopIBRICsCVIgMZxI2_TY8jQCEwYBhgLKs4DAMBZVoA4veEi53RtOoVPwB2jiUcCHIADM0Bw-f0GDIRNZ_3ocF_KoJWW4gggVC9iUdxIHD0Aw6dY7D_pzje67A7H15XjdHRTKU3MDaQ4Qbd-rbl89acdSmf9hWCE4z_H6IkbfBPxoezSOh-Csoj3dkWUPO6I88qbAJ5lRW7TMIgJRSpjh2wfIquGpmlJo6JqjdhMuq1gJLZRb6Woyxj6_Obq0YCtT0mNLjIcNp3ddznJEIO6tinA54FBKztWmjlcMIlUi8dmUcesdepEHoq26aDmbN84HchQG88RnXVSCdnl0_nIndqxhNZvgC1cMmZGX_YMqXNeGMh8GjNsB5uDoD9SUn9Blc0wz_J_VP9maj_GcxEZAxcF4y9otFkBXSHX75422dAbiSZkrP16_jfK-GIP-lNaM1HZmYouiumibzvt87ntNaaTpBRQXIgkKyr2zOa6XYxpV9ik4hHrCueDPLp0mSmbMa-E64I39HCwjM2YNeNU9ofdGrOYIMy4vbutxPD0oQYAa4Btam4goOw--i0Vez-GgbhK-PlaAW_4zlkh7vuLrIQrqS3NQ6tZy8ljhzqkfhhHvrc9hfnKV3LK0HTFWAA8MyvcG5JIpx_XMO7hpvQF/s1600/remote-breakpoint.png)
 
-  
-
 [![](https://1.bp.blogspot.com/-d59rcv8qDpg/XomuqIJLvqI/AAAAAAAALmE/7dNE24iskVE7G5wsP7HhqgECl4Z5Xu1TwCLcBGAsYHQ/s1600/remote-console.png)](https://1.bp.blogspot.com/-d59rcv8qDpg/XomuqIJLvqI/AAAAAAAALmE/7dNE24iskVE7G5wsP7HhqgECl4Z5Xu1TwCLcBGAsYHQ/s1600/remote-console.png)
-
   
-As we can see, in the first test, the logName variable assumes the develoment machine LOGNAME environment variable, while in the second it assumes the Pi's one.
+As we can see, in the first test, the logName variable assumes the development machine LOGNAME environment variable, while in the second it assumes the Pi's one.
+
+As always Enjoy, and if we are still under COVID-19 attack, #staysafe, #StayAtHome.  
+
+[![](https://1.bp.blogspot.com/-VPpx7wpWqMk/Xom1ZaYbINI/AAAAAAAALmU/srDW2xp9I_kHGJHP2J_Q2QE4-APN0vPZQCLcBGAsYHQ/s320/stay-at-home_2x.png)](https://1.bp.blogspot.com/-VPpx7wpWqMk/Xom1ZaYbINI/AAAAAAAALmU/srDW2xp9I_kHGJHP2J_Q2QE4-APN0vPZQCLcBGAsYHQ/s1600/stay-at-home_2x.png)
